@@ -1,0 +1,13 @@
+baseURL = "https://carbonsushi.github.io/"
+copyright = "Copyright © 2022 carbonsushi"
+defaultContentLanguage = "ja"
+enableEmoji = true
+enableGitInfo = true
+enableRobotsTXT = true
+googleAnalytics = "" # TODO
+hasCJKLanguage = true
+languageCode = "ja-jp"
+paginate = 5
+title = "Get-Content .\\Blog"
+timeZone = "Asia/Tokyo"
+theme = "papermod"
