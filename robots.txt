@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://carbonsushi.github.io/sitemap.xml
