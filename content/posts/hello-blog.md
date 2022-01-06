@@ -1,5 +1,5 @@
 ---
-title: "Hello Blog"
+title: "Hello, Blog!"
 categories: ["Misc"]
 ---
 

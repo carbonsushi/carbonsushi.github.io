@@ -37,6 +37,7 @@ home = ["HTML", "RSS", "JSON"]
 [params]
 author = "carbonsushi"
 comments = true
+dateFormat = "2006/01/02"
 description = "My blog."
 ShowBreadCrumbs = true
 ShowCodeCopyButtons = true
