@@ -1,13 +1,55 @@
 baseURL = "https://carbonsushi.github.io/"
 copyright = "Copyright © 2022 carbonsushi"
 defaultContentLanguage = "ja"
+disqusShortname = "carbonsushi-github-io"
 enableEmoji = true
 enableGitInfo = true
 enableRobotsTXT = true
-googleAnalytics = "" # TODO
 hasCJKLanguage = true
 languageCode = "ja-jp"
 paginate = 5
 title = "Get-Content .\\Blog"
 timeZone = "Asia/Tokyo"
 theme = "papermod"
+
+[frontmatter]
+date = [":git"]
+
+[[menu.main]]
+name = "Archives"
+url = "/archives/"
+
+[[menu.main]]
+name = "Categories"
+url = "/categories/"
+
+[[menu.main]]
+name = "Search"
+url = "/search/"
+
+[minify]
+disableXML = true
+minifyOutput = true
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
+[params]
+author = "carbonsushi"
+comments = true
+description = "My blog."
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowPostNavLinks = true
+ShowShareButtons = true
+
+[params.assets]
+disableHLJS = true
+
+[params.homeInfoParams]
+Title = "Hi!"
+Content = "My blog."
+
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/carbonsushi"
