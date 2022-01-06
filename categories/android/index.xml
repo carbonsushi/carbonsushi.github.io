@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Posts on Get-Content .\Blog</title>
-    <link>https://carbonsushi.github.io/posts/</link>
-    <description>Recent content in Posts on Get-Content .\Blog</description>
+    <title>Android on Get-Content .\Blog</title>
+    <link>https://carbonsushi.github.io/categories/android/</link>
+    <description>Recent content in Android on Get-Content .\Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2022 carbonsushi</copyright>
-    <lastBuildDate>Thu, 06 Jan 2022 18:02:54 +0900</lastBuildDate><atom:link href="https://carbonsushi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Jan 2022 18:02:54 +0900</lastBuildDate><atom:link href="https://carbonsushi.github.io/categories/android/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AndroidでmDNSを名前解決する</title>
       <link>https://carbonsushi.github.io/posts/android-resolve-mdns/</link>
@@ -15,15 +15,6 @@
       
       <guid>https://carbonsushi.github.io/posts/android-resolve-mdns/</guid>
       <description>主要OSの中でAndroidだけがmDNSを名前解決できないらしい。 Chromium・AOSPにissueが提出されているがまったくもって動</description>
-    </item>
-    
-    <item>
-      <title>Hello, Blog!</title>
-      <link>https://carbonsushi.github.io/posts/hello-blog/</link>
-      <pubDate>Thu, 06 Jan 2022 18:02:54 +0900</pubDate>
-      
-      <guid>https://carbonsushi.github.io/posts/hello-blog/</guid>
-      <description>HugoとGitHub Pagesで作ってみた。</description>
     </item>
     
   </channel>

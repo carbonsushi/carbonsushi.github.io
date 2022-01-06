@@ -7,16 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2022 carbonsushi</copyright>
-    <lastBuildDate>Thu, 06 Jan 2022 17:41:13 +0900</lastBuildDate><atom:link href="https://carbonsushi.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Jan 2022 18:02:54 +0900</lastBuildDate><atom:link href="https://carbonsushi.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AndroidでmDNSを名前解決する</title>
+      <link>https://carbonsushi.github.io/posts/android-resolve-mdns/</link>
+      <pubDate>Thu, 06 Jan 2022 18:02:54 +0900</pubDate>
+      
+      <guid>https://carbonsushi.github.io/posts/android-resolve-mdns/</guid>
+      <description>主要OSの中でAndroidだけがmDNSを名前解決できないらしい。 Chromium・AOSPにissueが提出されているがまったくもって動</description>
+    </item>
     
     <item>
-      <title>Hello Blog</title>
+      <title>Hello, Blog!</title>
       <link>https://carbonsushi.github.io/posts/hello-blog/</link>
-      <pubDate>Thu, 06 Jan 2022 17:41:13 +0900</pubDate>
+      <pubDate>Thu, 06 Jan 2022 18:02:54 +0900</pubDate>
       
       <guid>https://carbonsushi.github.io/posts/hello-blog/</guid>
       <description>HugoとGitHub Pagesで作ってみた。</description>
     </item>
+    
     
     
   </channel>
