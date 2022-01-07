@@ -7,14 +7,23 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2022 carbonsushi</copyright>
-    <lastBuildDate>Thu, 06 Jan 2022 18:02:54 +0900</lastBuildDate><atom:link href="https://carbonsushi.github.io/categories/android/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Jan 2022 07:31:39 +0900</lastBuildDate><atom:link href="https://carbonsushi.github.io/categories/android/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AndroidでmDNSを名前解決する</title>
       <link>https://carbonsushi.github.io/posts/android-resolve-mdns/</link>
-      <pubDate>Thu, 06 Jan 2022 18:02:54 +0900</pubDate>
+      <pubDate>Sat, 08 Jan 2022 07:31:39 +0900</pubDate>
       
       <guid>https://carbonsushi.github.io/posts/android-resolve-mdns/</guid>
-      <description>主要OSの中でAndroidだけがmDNSを名前解決できないらしい。 Chromium・AOSPにissueが提出されているがまったくもって動</description>
+      <description>主要OSの中でAndroidだけがmDNSを名前解決できないらしい。 https://qiita.com/maccadoo/items/48ace84f8aca030a12f1 Chromium・AOSPにissueが提出されているがまったくもって</description>
+    </item>
+    
+    <item>
+      <title>IPTV Core launcherを作った</title>
+      <link>https://carbonsushi.github.io/posts/iptv-core-launcher/</link>
+      <pubDate>Sat, 08 Jan 2022 07:31:39 +0900</pubDate>
+      
+      <guid>https://carbonsushi.github.io/posts/iptv-core-launcher/</guid>
+      <description>IPTVというそのまんまの名前のアプリでIPTVを視聴していたのだが、 いつの間にか非公開になっていて再インストール不可に。 https://web.archive.org/web/20211108010120if_/play.google.com/store/apps/details?id=ru.iptvremote.android.iptv 同じ作者が公開し</description>
     </item>
     
   </channel>

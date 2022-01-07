@@ -5,7 +5,7 @@
 <meta name=robots content="index, follow">
 <title>AndroidでmDNSを名前解決する | Get-Content .\Blog</title>
 <meta name=keywords content>
-<meta name=description content="主要OSの中でAndroidだけがmDNSを名前解決できないらしい。 Chromium・AOSPにissueが提出されているがまったくもって動">
+<meta name=description content="主要OSの中でAndroidだけがmDNSを名前解決できないらしい。 https://qiita.com/maccadoo/items/48ace84f8aca030a12f1 Chromium・AOSPにissueが提出されているがまったくもって">
 <meta name=author content="carbonsushi">
 <link rel=canonical href=https://carbonsushi.github.io/posts/android-resolve-mdns/>
 <link crossorigin=anonymous href=/assets/css/stylesheet.min.1e44d58192cbf6d7a4eb649bc43dbc3d4cc432677e5d8adc69b08c34cbe461ac.css integrity="sha256-HkTVgZLL9tek62SbxD28PUzEMmd+XYrcabCMNMvkYaw=" rel="preload stylesheet" as=style>
@@ -21,15 +21,15 @@
 <style>#theme-toggle,.top-link{display:none}</style>
 <style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
 </noscript><meta name=google-site-verification content="J6fMbs5RLmcj6CFn00JRG5ecHfHXU5WqLrZX911Y1Jc"><meta property="og:title" content="AndroidでmDNSを名前解決する">
-<meta property="og:description" content="主要OSの中でAndroidだけがmDNSを名前解決できないらしい。 Chromium・AOSPにissueが提出されているがまったくもって動">
+<meta property="og:description" content="主要OSの中でAndroidだけがmDNSを名前解決できないらしい。 https://qiita.com/maccadoo/items/48ace84f8aca030a12f1 Chromium・AOSPにissueが提出されているがまったくもって">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://carbonsushi.github.io/posts/android-resolve-mdns/"><meta property="article:section" content="posts">
-<meta property="article:modified_time" content="2022-01-06T18:02:54+09:00">
+<meta property="article:modified_time" content="2022-01-08T07:31:39+09:00">
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="AndroidでmDNSを名前解決する">
-<meta name=twitter:description content="主要OSの中でAndroidだけがmDNSを名前解決できないらしい。 Chromium・AOSPにissueが提出されているがまったくもって動">
+<meta name=twitter:description content="主要OSの中でAndroidだけがmDNSを名前解決できないらしい。 https://qiita.com/maccadoo/items/48ace84f8aca030a12f1 Chromium・AOSPにissueが提出されているがまったくもって">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://carbonsushi.github.io/posts/"},{"@type":"ListItem","position":2,"name":"AndroidでmDNSを名前解決する","item":"https://carbonsushi.github.io/posts/android-resolve-mdns/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"AndroidでmDNSを名前解決する","name":"AndroidでmDNSを名前解決する","description":"主要OSの中でAndroidだけがmDNSを名前解決できないらしい。 Chromium・AOSPにissueが提出されているがまったくもって動","keywords":[],"articleBody":"主要OSの中でAndroidだけがmDNSを名前解決できないらしい。\nChromium・AOSPにissueが提出されているがまったくもって動きがない。\nということでDotLocalFinderというアプリを丸パクリインスパイアしてmDNSの名前解決をしてみる。\nDNSもmDNSもDNS-SDも全く知らないので聞きかじり見かじり注意。\nそもそもmDNSとは そもそもmDNSという規格がよくわからないので調べてみる。\nWikipedia様によると、RFC 6762で定義されたZeroconf技術とか言うものらしい。\nZeroconfとか言うのはDHCPやらmDNSやらUPnPやらの技術を一纏めにした言い方なのかな？\n似た技術の中にRFC 6763で定義されたDNS-SDというものがあるがこっちはネットワーク内の機器を検索する技術みたい。\nmDNSをAndroidで名前解決するには まず「mDNS Android Developers」でGooglingするとNSDってAPIが出てくるがこれはDNS-SD関連のものでmDNSとは関係ないらしい。\n他にもJmDNSやらmdnsjavaなど使えそうなライブラリが出てくるがどれもDNS-SD関連のものでmDNSを名前解決できるものは出てこない。\n自分の解釈が間違ってるのかな？\nするとDotLocalFinderという唯一自分の目的にあってそうなアプリを見つけたのでコードを見てみると「xyz.gianlu.mdnsjava:mdnsjava」というライブラリを使用している。\n調べるとStackoverflowにこれを使えば名前解決できるとあったし間違いない。\n恐らくリポジトリはこれだが現在削除されていて閲覧は不可能。\nmavenのSourceを見る限り前述したmdnsjavaのフォークのようだ。\n実装 というわけで丸パクリインスパイアしてテキトーに実装してみる。\nメインスレッドでやると怒られるのでDispatchers.IOでやろーね☆\nちなみにTarget APIを30以上に上げると動作しません。\nhttps://github.com/Network-Revolution/DotLocalFinder/issues/2\n（29だとプレイストア弾かれるらしいけど）\n// 名前解決するホスト名 val resolveHost = \"\" lifecycleScope.launch { val records = withContext(Dispatchers.IO) { Lookup(resolveHost, Type.A, DClass.IN).lookupRecords() // IPv6 (AAAAレコード)  // Lookup(resolveHost, Type.AAAA, DClass.IN).lookupRecords()  } if (records.isEmpty()) { // 名前解決に失敗した場合  } else { val resolvedIP = (records[0] as ARecord).address.hostAddress // IPv6 (AAAAレコード)  // val resolvedIP = (records[0] as AAAARecord).address.hostAddress  } } MulticastLockはやらなくても良いっぽい。（ライブラリ側でよしなにしてくれてるのかな？）\n","wordCount":"1010","inLanguage":"ja","datePublished":"0001-01-01T00:00:00Z","dateModified":"2022-01-06T18:02:54+09:00","author":{"@type":"Person","name":"carbonsushi"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://carbonsushi.github.io/posts/android-resolve-mdns/"},"publisher":{"@type":"Organization","name":"Get-Content .\\Blog","logo":{"@type":"ImageObject","url":"https://carbonsushi.github.io/favicon.ico"}}}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"AndroidでmDNSを名前解決する","name":"AndroidでmDNSを名前解決する","description":"主要OSの中でAndroidだけがmDNSを名前解決できないらしい。 https://qiita.com/maccadoo/items/48ace84f8aca030a12f1 Chromium・AOSPにissueが提出されているがまったくもって","keywords":[],"articleBody":"主要OSの中でAndroidだけがmDNSを名前解決できないらしい。\nhttps://qiita.com/maccadoo/items/48ace84f8aca030a12f1\nChromium・AOSPにissueが提出されているがまったくもって動きがない。\nhttps://bugs.chromium.org/p/chromium/issues/detail?id=405925\nhttps://issuetracker.google.com/issues/140786115\nということでDotLocalFinderというアプリを丸パクリインスパイアしてmDNSの名前解決をしてみる。\nhttps://github.com/Network-Revolution/DotLocalFinder\nDNSもmDNSもDNS-SDも全く知らないので聞きかじり見かじり注意。\nそもそもmDNSとは そもそもmDNSという規格がよくわからないので調べてみる。\nWikipedia様によると、RFC 6762で定義されたZeroconf技術とか言うものらしい。\nZeroconfはDHCPやらmDNSやらUPnPやらの技術を一纏めにした言い方なのかな？\n似た技術の中にRFC 6763で定義されたDNS-SDというものがあるがこっちはネットワーク内の機器を検索する技術みたい。\nmDNSをAndroidで名前解決するには まず「mDNS Android Developers」でGooglingするとNSDというAPIが出てくるがこれはDNS-SD関連のものでmDNSとは関係ないらしい。\nhttps://developer.android.com/training/connect-devices-wirelessly/nsd\n他にもJmDNSやらmdnsjavaなど使えそうなライブラリが出てくるがどれもDNS-SD関連のものでmDNSを名前解決できるものは出てこない。\n自分の解釈が間違ってるのかな？\nするとDotLocalFinderという唯一自分の目的にあってそうなアプリを見つけたのでコードを見てみると「xyz.gianlu.mdnsjava:mdnsjava」というライブラリを使用している。\nhttps://github.com/Network-Revolution/DotLocalFinder/blob/09b15a5bafe28175a86e7be7b2079dc5d26486fd/app/build.gradle.kts#L126\nmavenのsource.jarを見る限り前述したmdnsjavaのフォークのようだ。 https://repo1.maven.org/maven2/xyz/gianlu/mdnsjava/mdnsjava/2.2.1/\n実装 というわけで丸パクリインスパイアしてテキトーに実装してみる。\nメインスレッドでやると怒られるのでDispatchers.IOでやろーね☆\nちなみにTarget APIを30以上に上げると動作しません。\nhttps://github.com/Network-Revolution/DotLocalFinder/issues/2\n（29だとプレイストア弾かれるらしいけど）\n// 名前解決するホスト名 val resolveHost = \"\" lifecycleScope.launch { val records = withContext(Dispatchers.IO) { Lookup(resolveHost, Type.A, DClass.IN).lookupRecords() // IPv6 (AAAAレコード)  // Lookup(resolveHost, Type.AAAA, DClass.IN).lookupRecords()  } if (records.isEmpty()) { // 名前解決に失敗した場合  } else { val resolvedIP = (records[0] as ARecord).address.hostAddress // IPv6 (AAAAレコード)  // val resolvedIP = (records[0] as AAAARecord).address.hostAddress  } } MulticastLockはやらなくても良いっぽい。（ライブラリ側でよしなにしてくれてるのかな？）\n","wordCount":"946","inLanguage":"ja","datePublished":"0001-01-01T00:00:00Z","dateModified":"2022-01-08T07:31:39+09:00","author":{"@type":"Person","name":"carbonsushi"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://carbonsushi.github.io/posts/android-resolve-mdns/"},"publisher":{"@type":"Organization","name":"Get-Content .\\Blog","logo":{"@type":"ImageObject","url":"https://carbonsushi.github.io/favicon.ico"}}}</script>
 </head>
 <body id=top>
 <script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
@@ -68,26 +68,31 @@
 <h1 class=post-title>
 AndroidでmDNSを名前解決する
 </h1>
-<div class=post-meta><span title="2022-01-06 18:02:54 +0900 +0900">2022/01/06</span>&nbsp;·&nbsp;carbonsushi
+<div class=post-meta><span title="2022-01-08 07:31:39 +0900 +0900">2022/01/08</span>&nbsp;·&nbsp;carbonsushi
 </div>
 </header>
-<div class=post-content><p><a href=https://qiita.com/maccadoo/items/48ace84f8aca030a12f1>主要OSの中でAndroidだけがmDNSを名前解決できないらしい。</a><br>
-<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=405925">Chromium</a>・<a href=https://issuetracker.google.com/issues/140786115>AOSP</a>にissueが提出されているがまったくもって動きがない。</p>
-<p>ということで<a href=https://github.com/Network-Revolution/DotLocalFinder>DotLocalFinder</a>というアプリを<del>丸パクリ</del>インスパイアしてmDNSの名前解決をしてみる。</p>
+<div class=post-content><p>主要OSの中でAndroidだけがmDNSを名前解決できないらしい。<br>
+<a href=https://qiita.com/maccadoo/items/48ace84f8aca030a12f1>https://qiita.com/maccadoo/items/48ace84f8aca030a12f1</a></p>
+<p>Chromium・AOSPにissueが提出されているがまったくもって動きがない。<br>
+<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=405925">https://bugs.chromium.org/p/chromium/issues/detail?id=405925</a><br>
+<a href=https://issuetracker.google.com/issues/140786115>https://issuetracker.google.com/issues/140786115</a></p>
+<p>ということでDotLocalFinderというアプリを<del>丸パクリ</del>インスパイアしてmDNSの名前解決をしてみる。<br>
+<a href=https://github.com/Network-Revolution/DotLocalFinder>https://github.com/Network-Revolution/DotLocalFinder</a></p>
 <p><strong>DNSもmDNSもDNS-SDも全く知らないので聞きかじり見かじり注意。</strong></p>
 <h2 id=そもそもmdnsとは>そもそもmDNSとは<a hidden class=anchor aria-hidden=true href=#そもそもmdnsとは>#</a></h2>
 <p>そもそもmDNSという規格がよくわからないので調べてみる。<br>
-<a href=https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%AB%E3%83%81%E3%82%AD%E3%83%A3%E3%82%B9%E3%83%88DNS>Wikipedia</a>様によると、<a href=https://tex2e.github.io/rfc-translater/html/rfc6762.html>RFC 6762</a>で定義されたZeroconf技術とか言うものらしい。<br>
-<a href=https://ja.wikipedia.org/wiki/Zeroconf>Zeroconf</a>とか言うのはDHCPやらmDNSやらUPnPやらの技術を一纏めにした言い方なのかな？</p>
-<p>似た技術の中に<a href=https://tex2e.github.io/rfc-translater/html/rfc6763.html>RFC 6763</a>で定義されたDNS-SDというものがあるがこっちはネットワーク内の機器を検索する技術みたい。</p>
+Wikipedia様によると、RFC 6762で定義されたZeroconf技術とか言うものらしい。<br>
+ZeroconfはDHCPやらmDNSやらUPnPやらの技術を一纏めにした言い方なのかな？</p>
+<p>似た技術の中にRFC 6763で定義されたDNS-SDというものがあるがこっちはネットワーク内の機器を検索する技術みたい。</p>
 <h2 id=mdnsをandroidで名前解決するには>mDNSをAndroidで名前解決するには<a hidden class=anchor aria-hidden=true href=#mdnsをandroidで名前解決するには>#</a></h2>
-<p>まず「mDNS Android Developers」でGooglingすると<a href=https://developer.android.com/training/connect-devices-wirelessly/nsd>NSD</a>ってAPIが出てくるがこれはDNS-SD関連のものでmDNSとは関係ないらしい。<br>
-他にも<a href=https://github.com/jmdns/jmdns>JmDNS</a>やら<a href=https://github.com/posicks/mdnsjava>mdnsjava</a>など使えそうなライブラリが出てくるがどれもDNS-SD関連のものでmDNSを名前解決できるものは出てこない。<br>
+<p>まず「mDNS Android Developers」でGooglingするとNSDというAPIが出てくるがこれはDNS-SD関連のものでmDNSとは関係ないらしい。<br>
+<a href=https://developer.android.com/training/connect-devices-wirelessly/nsd>https://developer.android.com/training/connect-devices-wirelessly/nsd</a></p>
+<p>他にもJmDNSやらmdnsjavaなど使えそうなライブラリが出てくるがどれもDNS-SD関連のものでmDNSを名前解決できるものは出てこない。<br>
 自分の解釈が間違ってるのかな？</p>
-<p>すると<a href=https://github.com/Network-Revolution/DotLocalFinder>DotLocalFinder</a>という唯一自分の目的にあってそうなアプリを見つけたのでコードを見てみると「xyz.gianlu.mdnsjava:mdnsjava」というライブラリを使用している。<br>
-調べると<a href=https://stackoverflow.com/questions/64713877/how-to-resolve-ipv4-and-ipv6-from-local-using-mdns-in-android>Stackoverflow</a>にこれを使えば名前解決できるとあったし間違いない。<br>
-恐らくリポジトリは<a href=https://github.com/devgianlu/mdnsjava>これ</a>だが現在削除されていて閲覧は不可能。<br>
-<a href=https://repo1.maven.org/maven2/xyz/gianlu/mdnsjava/mdnsjava/2.2.1/>maven</a>のSourceを見る限り前述したmdnsjavaのフォークのようだ。</p>
+<p>するとDotLocalFinderという唯一自分の目的にあってそうなアプリを見つけたのでコードを見てみると「xyz.gianlu.mdnsjava:mdnsjava」というライブラリを使用している。<br>
+<a href=https://github.com/Network-Revolution/DotLocalFinder/blob/09b15a5bafe28175a86e7be7b2079dc5d26486fd/app/build.gradle.kts#L126>https://github.com/Network-Revolution/DotLocalFinder/blob/09b15a5bafe28175a86e7be7b2079dc5d26486fd/app/build.gradle.kts#L126</a></p>
+<p>mavenのsource.jarを見る限り前述したmdnsjavaのフォークのようだ。
+<a href=https://repo1.maven.org/maven2/xyz/gianlu/mdnsjava/mdnsjava/2.2.1/>https://repo1.maven.org/maven2/xyz/gianlu/mdnsjava/mdnsjava/2.2.1/</a></p>
 <h2 id=実装>実装<a hidden class=anchor aria-hidden=true href=#実装>#</a></h2>
 <p>というわけで<del>丸パクリ</del>インスパイアしてテキトーに実装してみる。<br>
 メインスレッドでやると怒られるのでDispatchers.IOでやろーね☆</p>
@@ -115,10 +120,10 @@ lifecycleScope.launch {
 </div>
 <footer class=post-footer>
 <nav class=paginav>
-<a class=next href=https://carbonsushi.github.io/posts/hello-blog/>
+<a class=next href=https://carbonsushi.github.io/posts/iptv-core-launcher/>
 <span class=title>次のページ »</span>
 <br>
-<span>Hello, Blog!</span>
+<span>IPTV Core launcherを作った</span>
 </a>
 </nav>
 <div class=share-buttons>
