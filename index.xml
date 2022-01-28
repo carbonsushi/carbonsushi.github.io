@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2022 carbonsushi</copyright>
-    <lastBuildDate>Thu, 13 Jan 2022 09:59:39 +0900</lastBuildDate><atom:link href="https://carbonsushi.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 29 Jan 2022 04:42:29 +0900</lastBuildDate><atom:link href="https://carbonsushi.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mi shutterを作った</title>
+      <link>https://carbonsushi.github.io/posts/mi-shutter/</link>
+      <pubDate>Sat, 29 Jan 2022 04:42:29 +0900</pubDate>
+      
+      <guid>https://carbonsushi.github.io/posts/mi-shutter/</guid>
+      <description>日本のスマホは何故かシャッター音が鳴る。 法律で決まっているのかと思えばそうではなくただの自主規制。 （一応韓国にも同じような規制はあるらしい）</description>
+    </item>
+    
     <item>
       <title>2chGear ChMate proxyを作った</title>
       <link>https://carbonsushi.github.io/posts/2chgear-chmate-proxy/</link>
