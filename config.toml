@@ -16,10 +16,6 @@ theme = "papermod"
 date = [":git"]
 
 [[menu.main]]
-name = "Archives"
-url = "/archives/"
-
-[[menu.main]]
 name = "Categories"
 url = "/categories/"
 
