@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2022 carbonsushi</copyright>
-    <lastBuildDate>Sun, 20 Feb 2022 04:34:41 +0900</lastBuildDate><atom:link href="https://carbonsushi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Feb 2022 01:38:43 +0900</lastBuildDate><atom:link href="https://carbonsushi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>マッシュルームの作りかた</title>
+      <link>https://carbonsushi.github.io/posts/mushroom-develop/</link>
+      <pubDate>Sat, 26 Feb 2022 01:38:43 +0900</pubDate>
+      
+      <guid>https://carbonsushi.github.io/posts/mushroom-develop/</guid>
+      <description>マッシュルームの開発ドキュメントがいつの間にか消失していたのでメモ。 Internet Archiveに残ってました。 https://web.archive.org/web/20210303183042if_/simeji.me/blog/manuals/manuals_android/android_mushroom/make_mushroom/id=58 要約（？） actionはcom.ada</description>
+    </item>
+    
     <item>
       <title>SwipeRefreshLayoutの子にViewPager2を使うなら1.2.0-alpha01を使え</title>
       <link>https://carbonsushi.github.io/posts/swiperefreshlayout-viewpager2/</link>
