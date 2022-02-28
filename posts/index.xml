@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2022 carbonsushi</copyright>
-    <lastBuildDate>Sat, 26 Feb 2022 01:38:43 +0900</lastBuildDate><atom:link href="https://carbonsushi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Mar 2022 06:01:04 +0900</lastBuildDate><atom:link href="https://carbonsushi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AndroidでmDNSを名前解決する</title>
+      <link>https://carbonsushi.github.io/posts/android-resolve-mdns/</link>
+      <pubDate>Tue, 01 Mar 2022 06:01:04 +0900</pubDate>
+      
+      <guid>https://carbonsushi.github.io/posts/android-resolve-mdns/</guid>
+      <description>主要OSの中でAndroidだけがmDNSを名前解決できないらしい。 https://qiita.com/maccadoo/items/48ace84f8aca030a12f1 Chromium・AOSPにissueが提出されているがまったくもって</description>
+    </item>
+    
     <item>
       <title>マッシュルームの作りかた</title>
       <link>https://carbonsushi.github.io/posts/mushroom-develop/</link>
@@ -51,15 +60,6 @@
       
       <guid>https://carbonsushi.github.io/posts/2chgear-chmate-proxy/</guid>
       <description>ChMateという掲示板書き込みアプリには「外部アプリで書き込む」というオプションがある。 恐らく対応しているのは2chGearというアプリの</description>
-    </item>
-    
-    <item>
-      <title>AndroidでmDNSを名前解決する</title>
-      <link>https://carbonsushi.github.io/posts/android-resolve-mdns/</link>
-      <pubDate>Sat, 08 Jan 2022 07:31:39 +0900</pubDate>
-      
-      <guid>https://carbonsushi.github.io/posts/android-resolve-mdns/</guid>
-      <description>主要OSの中でAndroidだけがmDNSを名前解決できないらしい。 https://qiita.com/maccadoo/items/48ace84f8aca030a12f1 Chromium・AOSPにissueが提出されているがまったくもって</description>
     </item>
     
     <item>
