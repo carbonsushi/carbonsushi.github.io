@@ -51,11 +51,18 @@ mavenのsource.jarを見る限り前述したmdnsjavaのフォークのようだ
 val resolveHost = ""
 
 lifecycleScope.launch {
+    val multicastLock = (applicationContext.getSystemService(WIFI_SERVICE) as WifiManager).createMulticastLock("ResolvemDNS")
+    multicastLock.setReferenceCounted(true)
+    multicastLock.acquire()
+
     val records = withContext(Dispatchers.IO) {
         Lookup(resolveHost, Type.A, DClass.IN).lookupRecords()
         // IPv6 (AAAAレコード)
         // Lookup(resolveHost, Type.AAAA, DClass.IN).lookupRecords()
     }
+
+    multicastLock.release()
+
     if (records.isEmpty()) {
         // 名前解決に失敗した場合
     } else {
@@ -66,4 +73,13 @@ lifecycleScope.launch {
 }
 ```
 
-MulticastLockはやらなくても良いっぽい。（ライブラリ側でよしなにしてくれてるのかな？）
+~~MulticastLockはやらなくても良いっぽい。（ライブラリ側でよしなにしてくれてるのかな？）~~
+
+　 　　　*　　　　　　*  
+　　＊　　　　　＋　　うそです  
+　 　　 n ∧＿∧　n  
+　＋　(ﾖ（* ´∀｀）E)  
+　 　 　 Y 　　　 Y　　　　＊  
+
+別によしなにはしてくれていなかった。  
+端末毎に動作が違うようで、MulticastLockしないと動作しない端末もあるようなので念の為しておいたほうがいい。
